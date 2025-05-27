@@ -2,24 +2,28 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function HomeSection() {
+  const sectionRef = useRef(null);
   return (
     <section
       id="home"
       className="min-h-screen flex flex-col items-center justify-center text-center p-8 bg-background relative overflow-hidden"
+      ref={sectionRef}
     >
       {/* Optional: Add a subtle background pattern or video here */}
       {/* <div className="absolute inset-0 bg-gradient-to-br from-background via-transparent to-primary opacity-10"></div> */}
-      
-      <div className="relative z-10 space-y-8">
+
+      <div className="relative z-10 space-y-8 animate-fadeInUp">
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight animate-fadeIn" style={{ animationDelay: '0.2s' }}>
           <span className="block">Welcome to</span>
-          <span className="block text-primary">Nocturne</span>
+          <span className="block text-primary">PulsarX</span>
         </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-fadeIn" style={{ animationDelay: '0.5s' }}>
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
           Crafting Digital Excellence, Illuminating Your Vision. We build innovative solutions that propel your business forward.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 animate-slideInUp" style={{ animationDelay: '0.8s' }}>

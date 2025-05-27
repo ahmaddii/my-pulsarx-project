@@ -1,11 +1,11 @@
-
 "use client";
 
 import Link from "next/link";
-import { ArrowUp, Moon, Linkedin, Twitter, Github } from "lucide-react";
+import { ArrowUp, Linkedin, Twitter, Github } from "lucide-react"; // Removed Moon
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import Image from "next/image"; // Imported Image
 
 export function Footer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,9 +38,9 @@ export function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "https://linkedin.com/company/nocturne", label: "LinkedIn" },
-    { icon: Twitter, href: "https://twitter.com/nocturne", label: "Twitter" },
-    { icon: Github, href: "https://github.com/nocturne", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/malik-ahmad-rasheed-3768902a9/", label: "LinkedIn" },
+    { icon: Twitter, href: "https://x.com/", label: "Twitter" },
+    { icon: Github, href: "https://github.com/ahmaddii", label: "GitHub" },
   ];
 
   return (
@@ -50,9 +50,17 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <Link href="#home" className="flex items-center gap-2 mb-4 group">
-              <Moon className="h-8 w-8 text-primary group-hover:animate-pulse" />
+              {/* Replaced Moon icon with Image */}
+              <Image
+                src="/images/pulsarxlogo.png" // Path to your logo in public
+                alt="PulsarX Logo" // Important for accessibility
+                width={40} // Adjust width as needed (Moon was h-8 w-8, which is ~32px)
+                height={38} // Adjust height as needed
+                // You might want to add group-hover:animate-pulse class to the Image component
+                className="group-hover:animate-pulse"
+              />
               <span className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                Nocturne
+                PulsarX
               </span>
             </Link>
             <p className="text-muted-foreground text-sm">
@@ -96,7 +104,7 @@ export function Footer() {
 
         <div className="border-t border-border pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Nocturne. All rights reserved.
+            &copy; {new Date().getFullYear()} PulsarX. All rights reserved.
           </p>
         </div>
       </div>

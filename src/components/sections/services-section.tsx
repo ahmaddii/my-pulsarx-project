@@ -1,7 +1,18 @@
 
+"use client";
 import { ServiceCard } from "@/components/ui/service-card";
-import { Code, LayoutDashboard, Palette, Zap, Brain, Users } from "lucide-react";
+import {
+ Code,
+  LayoutDashboard,
+  Palette,
+  Zap,
+  Brain,
+ Users,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
+import { cn } from "@/lib/utils";
+ 
 const services = [
   {
     icon: Code,
@@ -36,6 +47,23 @@ const services = [
 ];
 
 export function ServicesSection() {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }}, []);
   return (
     <section id="services" className="py-16 md:py-24 bg-secondary text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,14 +76,19 @@ export function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard 
-              key={service.title} 
-              icon={service.icon} 
-              title={service.title} 
+        <div
+          ref={sectionRef}
+          className={cn("grid md:grid-cols-2 lg:grid-cols-3 gap-8",
+
+            isVisible ? "animate-fadeInUp" : "opacity-0"
+          )}
+        >
+          {services.map((service) => (
+            <ServiceCard
+              key={service.title}
+              icon={service.icon}
+              title={service.title}
               description={service.description}
-              delay={`${index * 0.1}s`}
             />
           ))}
         </div>

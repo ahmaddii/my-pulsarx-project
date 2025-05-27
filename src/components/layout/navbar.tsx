@@ -1,10 +1,13 @@
-
 "use client";
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, Moon } from "lucide-react"; // Moon icon used as placeholder for logo
 import { Button } from "@/components/ui/button";
+import Image from 'next/image'; // Corrected import for Image
+import { Menu, X } from "lucide-react"; // Make sure Menu and X are imported if used
+
+
+
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -34,7 +37,9 @@ export function Navbar() {
     <Link
       href={href}
       onClick={() => setIsOpen(false)}
-      className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-colors duration-300 md:text-sm"
+
+      // Increased font size to text-lg and removed md:text-sm
+      className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-primary transition-colors duration-300"
     >
       {label}
     </Link>
@@ -52,9 +57,14 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <Link href="#home" className="flex-shrink-0 flex items-center gap-2 group">
-              <Moon className="h-8 w-8 text-primary group-hover:animate-pulse" />
+            <Image
+                  src="/images/pulsarxlogo.png"// Path to your logo in public
+                  alt="PulsarX Logo" // Important for accessibility
+                  width={80} // Adjust width as needed
+                  height={40} // Adjust height as needed
+                />
               <span className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-                Nocturne
+                PulsarX
               </span>
             </Link>
           </div>
@@ -73,7 +83,7 @@ export function Navbar() {
               aria-label="Toggle menu"
               className="text-foreground hover:text-primary"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
@@ -82,12 +92,11 @@ export function Navbar() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "md:hidden transition-all duration-300 ease-in-out overflow-hidden",
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          "fixed inset-y-0 right-0 w-64 shadow-lg transform transition-transform duration-300 ease-in-out md:hidden backdrop-blur-sm bg-background/80",
+          isOpen ? "translate-x-0" : "translate-x-full"
         )}
-        style={{ backgroundColor: 'hsl(var(--background))' }} // Explicit background for mobile dropdown
       >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="px-5 py-6 space-y-4">
           {navLinks.map((link) => (
             <NavLinkItem key={link.href} {...link} />
           ))}

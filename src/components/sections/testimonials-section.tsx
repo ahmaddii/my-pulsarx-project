@@ -3,10 +3,10 @@ import { TestimonialCard } from "@/components/ui/testimonial-card";
 
 const testimonials = [
   {
-    quote: "Nocturne transformed our online presence. Their team is professional, creative, and delivered beyond our expectations!",
-    name: "Jane Doe",
+    quote: "PulsarX transformed our online presence. Their team is professional, creative, and delivered beyond our expectations!",
+    name: "Faraz Ali",
     title: "CEO, Innovatech",
-    imageUrl: "https://placehold.co/100x100/6A4AE3/FFFFFF.png?text=JD",
+    imageUrl: "https://t4.ftcdn.net/jpg/04/44/74/99/360_F_444749923_B0XJTJJRUVlRQHcDeSV1eOG6JjkKdj7Q.jpg", 
     rating: 5,
     imageHint: "client portrait happy"
   },
@@ -14,15 +14,15 @@ const testimonials = [
     quote: "The app they developed for us is fantastic. User-friendly, robust, and has significantly improved our customer engagement.",
     name: "John Smith",
     title: "Marketing Director, BizSolutions",
-    imageUrl: "https://placehold.co/100x100/4CB5F5/FFFFFF.png?text=JS",
+    imageUrl: "https://img.freepik.com/free-photo/serious-young-african-man-standing-isolated_171337-9633.jpg",
     rating: 5,
     imageHint: "client portrait professional"
   },
   {
-    quote: "Exceptional UI/UX design work. Nocturne understood our brand perfectly and created a stunning interface.",
+    quote: "Exceptional UI/UX design work. PulsarX understood our brand perfectly and created a stunning interface.",
     name: "Alice Brown",
     title: "Founder, Creative Co.",
-    imageUrl: "https://placehold.co/100x100/FFFFFF/08070B.png?text=AB",
+    imageUrl: "https://t4.ftcdn.net/jpg/02/45/56/35/360_F_245563558_XH9Pe5LJI2kr7VQuzQKAjAbz9PAyejG1.jpg",
     rating: 4,
     imageHint: "client portrait smiling"
   },
@@ -37,7 +37,7 @@ export function TestimonialsSection() {
             Client <span className="text-primary">Testimonials</span>
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
-            Hear what our satisfied clients have to say about their experience with Nocturne.
+            Hear what our satisfied clients have to say about their experience with PularX.
           </p>
         </div>
 

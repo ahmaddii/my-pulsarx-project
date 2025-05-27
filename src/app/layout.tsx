@@ -10,9 +10,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Nocturne | Professional Company Website',
-  description: 'Nocturne - We build innovative solutions for your business. Specializing in web development, app development, and design.',
-  keywords: 'Nocturne, web development, app development, design, company website, professional services',
+  title: 'PulsarX | Where Innovation Meets Excellence',
+  description: 'PulsarX - We build innovative solutions for your business. Specializing in web development, app development, and design.',
+  keywords: 'PulsarX, web development, app development, design, company website, professional services',
+  icons: {icon: ('/favicon.png')}
   // Add favicon link here if you have one, e.g., icons: { icon: '/favicon.ico' }
 };
 

@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
@@ -9,7 +8,7 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold sm:text-5xl">
-            About <span className="text-primary">Nocturne</span>
+            About <span className="text-primary">PulsarX</span>
           </h2>
           <p className="mt-4 text-xl text-muted-foreground">
             Discover our story, mission, and the vision that drives us.
@@ -17,20 +16,23 @@ export function AboutSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+          <div className="animate-fadeIn duration-1000 ease-out" style={{ animationDelay: '0.3s' }}>
             <Card className="overflow-hidden shadow-2xl">
               <Image
-                src="https://placehold.co/800x600/08070B/FFFFFF.png?text=Our+Team"
-                alt="Nocturne Team"
+                src="/images/team2.jpg" 
+                alt="PulsarX"
                 width={800}
-                height={600}
+                height={800}
                 className="w-full h-auto object-cover"
                 data-ai-hint="company team collaboration"
               />
             </Card>
+          
           </div>
 
-          <div className="space-y-6 animate-slideInUp" style={{ animationDelay: '0.4s' }}>
+          
+
+          <div className="space-y-6 animate-slideInUp duration-1000 ease-out" style={{ animationDelay: '0.4s' }}>
             <h3 className="text-3xl font-semibold text-primary">Our Story</h3>
             <p className="text-lg text-muted-foreground">
               Founded with a passion for innovation and a commitment to excellence, Nocturne has grown from a small idea into a dynamic force in the digital landscape. We believe in the power of technology to transform businesses and create meaningful impact.
