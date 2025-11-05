@@ -4,4 +4,4 @@ This is a NextJS starter in Firebase Studio.
 
 To get started, take a look at src/app/page.tsx.
 
-Complete Setup of Startup Project
+Complete Setup of Startup Project of PulsarX
