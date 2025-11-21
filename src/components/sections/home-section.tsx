@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Sparkles, Zap, ChevronDown, Rocket, Star } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Rocket, Star, Award, TrendingUp, Users } from "lucide-react";
 
 export function HomeSection() {
   const sectionRef = useRef(null);
@@ -38,6 +38,19 @@ export function HomeSection() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const stats = [
+    { icon: TrendingUp, value: "1000+", label: "Projects Delivered", gradient: "from-blue-500 to-cyan-500" },
+    { icon: Users, value: "500+", label: "Happy Clients", gradient: "from-purple-500 to-pink-500" },
+    { icon: Award, value: "98%", label: "Success Rate", gradient: "from-green-500 to-emerald-500" },
+    { icon: Zap, value: "24/7", label: "Support Available", gradient: "from-yellow-500 to-orange-500" },
+  ];
+
+  const features = [
+    { icon: Zap, text: "Lightning Fast", gradient: "from-yellow-500 to-orange-500" },
+    { icon: Star, text: "Premium Quality", gradient: "from-purple-500 to-pink-500" },
+    { icon: Rocket, text: "Innovation First", gradient: "from-blue-500 to-cyan-500" },
+  ];
+
   return (
     <section
       id="home"
@@ -48,9 +61,9 @@ export function HomeSection() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Stars Background */}
         <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => {
-            const size = Math.random() * 2 + 1;
-            const duration = Math.random() * 3 + 2;
+          {[...Array(100)].map((_, i) => {
+            const size = Math.random() * 3 + 1;
+            const duration = Math.random() * 4 + 2;
             const delay = Math.random() * 5;
             return (
               <div
@@ -63,7 +76,7 @@ export function HomeSection() {
                   left: `${Math.random() * 100}%`,
                   animationDuration: `${duration}s`,
                   animationDelay: `${delay}s`,
-                  opacity: Math.random() * 0.5 + 0.3,
+                  opacity: Math.random() * 0.7 + 0.2,
                 }}
               />
             );
@@ -71,41 +84,42 @@ export function HomeSection() {
         </div>
 
         {/* Shooting Stars */}
-        {[...Array(3)].map((_, i) => (
+        {[...Array(5)].map((_, i) => (
           <div
             key={`shooting-star-${i}`}
             className="absolute w-1 h-1 bg-white rounded-full animate-shooting-star"
             style={{
-              top: `${Math.random() * 50}%`,
+              top: `${Math.random() * 60}%`,
               left: `${Math.random() * 100}%`,
-              animationDelay: `${i * 8 + Math.random() * 5}s`,
-              animationDuration: '2s',
+              animationDelay: `${i * 6 + Math.random() * 4}s`,
+              animationDuration: '1.5s',
             }}
           >
-            <div className="absolute inset-0 w-20 h-0.5 bg-gradient-to-r from-white to-transparent rounded-full"></div>
+            <div className="absolute inset-0 w-24 h-0.5 bg-gradient-to-r from-white via-primary/50 to-transparent rounded-full"></div>
           </div>
         ))}
 
-        {/* Large Gradient Orbs - Fixed position */}
+        {/* Large Gradient Orbs with parallax */}
         <div 
-          className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-3xl opacity-50"
+          className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/40 to-accent/40 rounded-full blur-3xl opacity-60 animate-pulse-slow"
           style={{
-            transform: `translate(${scrollY * 0.1}px, ${scrollY * 0.05}px)`
+            transform: `translate(${scrollY * 0.15}px, ${scrollY * 0.1}px)`
           }}
         ></div>
         <div 
-          className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-accent/25 to-primary/25 rounded-full blur-3xl opacity-40"
+          className="absolute bottom-1/4 left-1/4 w-[700px] h-[700px] bg-gradient-to-tr from-accent/35 to-primary/35 rounded-full blur-3xl opacity-50 animate-pulse-slow"
           style={{
-            transform: `translate(${-scrollY * 0.08}px, ${scrollY * 0.06}px)`
+            transform: `translate(${-scrollY * 0.1}px, ${scrollY * 0.08}px)`,
+            animationDelay: '2s'
           }}
         ></div>
         
-        {/* Subtle Grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+        {/* Enhanced Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:60px_60px]"></div>
         
-        {/* Gentle Mouse-following gradient */}
+        {/* Mouse-following gradient - more prominent */}
         <div 
-          className="absolute w-[600px] h-[600px] bg-gradient-radial from-primary/15 via-accent/10 to-transparent rounded-full blur-3xl transition-all duration-1000 ease-out"
+          className="absolute w-[800px] h-[800px] bg-gradient-radial from-primary/25 via-accent/15 to-transparent rounded-full blur-3xl transition-all duration-700 ease-out"
           style={{
             left: `${mousePosition.x}%`,
             top: `${mousePosition.y}%`,
@@ -113,148 +127,168 @@ export function HomeSection() {
           }}
         ></div>
 
-        {/* Minimal Floating Particles */}
-        {[...Array(3)].map((_, i) => (
+        {/* Floating Particles - Enhanced */}
+        {[...Array(8)].map((_, i) => (
           <div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/40 rounded-full animate-float-slow"
+            key={`particle-${i}`}
+            className="absolute w-3 h-3 rounded-full animate-float-slow"
             style={{
-              top: `${20 + i * 30}%`,
-              left: `${15 + i * 35}%`,
-              animationDelay: `${i * 2}s`,
-              animationDuration: `${15 + i * 3}s`,
+              background: i % 2 === 0 ? 'radial-gradient(circle, rgba(var(--primary), 0.6) 0%, transparent 70%)' : 'radial-gradient(circle, rgba(var(--accent), 0.6) 0%, transparent 70%)',
+              top: `${10 + i * 12}%`,
+              left: `${8 + i * 12}%`,
+              animationDelay: `${i * 1.5}s`,
+              animationDuration: `${12 + i * 2}s`,
+              filter: 'blur(1px)',
             }}
           />
         ))}
       </div>
 
       {/* Main Content */}
-      <div className={`relative z-10 space-y-10 max-w-6xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`relative z-10 space-y-12 max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         
-        {/* Main Heading */}
-        <div className="space-y-6">
-          <h1 
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight animate-fadeIn"
-            style={{ animationDelay: '0.2s' }}
-          >
-            <span className="block text-foreground mb-3">Welcome to</span>
-            <span className="relative inline-block">
-              <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-transparent bg-clip-text">
-                PulsarX
-              </span>
-              <div className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full"></div>
-            </span>
-          </h1>
-
-          {/* Badge - Moved below heading */}
-          <div 
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary/10 to-accent/10 backdrop-blur-sm border border-primary/20 rounded-full shadow-lg animate-fadeIn"
-            style={{ animationDelay: '0.4s' }}
-          >
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
-              Innovation Meets Excellence
-            </span>
-            <Zap className="h-4 w-4 text-accent" />
+        {/* Top Badge - Enhanced */}
+        <div 
+          className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-primary/15 via-accent/15 to-primary/15 backdrop-blur-xl border-2 border-primary/30 rounded-full shadow-2xl shadow-primary/20 animate-fadeIn hover:scale-105 transition-transform duration-300"
+          style={{ animationDelay: '0.1s' }}
+        >
+          <div className="relative">
+            <Sparkles className="h-5 w-5 text-primary animate-spin-slow" />
+            <div className="absolute inset-0 bg-primary/50 blur-md rounded-full"></div>
           </div>
+          <span className="text-sm md:text-base font-bold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-transparent bg-clip-text">
+            Innovation Meets Excellence
+          </span>
+          <Zap className="h-5 w-5 text-accent animate-pulse" />
         </div>
 
-        {/* Subheading */}
+        {/* Main Heading - Enhanced */}
+        <div className="space-y-6">
+          <h1 
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold tracking-tight animate-fadeIn"
+            style={{ animationDelay: '0.2s' }}
+          >
+            <span className="block text-foreground mb-4 drop-shadow-2xl">Welcome to</span>
+            <span className="relative inline-block group">
+              <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-transparent bg-clip-text drop-shadow-2xl">
+                PulsarX
+              </span>
+              {/* Animated underline */}
+              <div className="absolute -bottom-4 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full animate-pulse-glow"></div>
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </span>
+          </h1>
+        </div>
+
+        {/* Subheading - Enhanced */}
         <p 
-          className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fadeInUp font-light px-4"
-          style={{ animationDelay: '0.5s' }}
+          className="text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed animate-fadeInUp font-light px-4"
+          style={{ animationDelay: '0.4s' }}
         >
-          Crafting Digital Excellence, <span className="text-primary font-semibold">Illuminating Your Vision</span>. 
-          <span className="block mt-2">We build innovative solutions that propel your business forward.</span>
+          Crafting <span className="text-primary font-bold">Digital Excellence</span>, Illuminating Your Vision
+          <span className="block mt-3 text-lg md:text-xl">
+            We transform ideas into powerful digital solutions that propel your business into the future
+          </span>
         </p>
 
-        {/* CTA Buttons */}
+        {/* Feature Pills - Enhanced */}
         <div 
-          className="flex flex-col sm:flex-row justify-center gap-4 animate-slideInUp pt-4"
-          style={{ animationDelay: '0.7s' }}
+          className="flex flex-wrap items-center justify-center gap-4 animate-fadeInUp"
+          style={{ animationDelay: '0.6s' }}
+        >
+          {features.map((feature, index) => (
+            <div 
+              key={feature.text}
+              className="group relative px-6 py-3 bg-background/50 backdrop-blur-xl border-2 border-border/50 rounded-full text-sm md:text-base font-semibold hover:scale-110 transition-all duration-300 cursor-pointer overflow-hidden"
+              style={{ animationDelay: `${0.6 + index * 0.1}s` }}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+              <span className="relative flex items-center gap-2 text-foreground group-hover:text-primary transition-colors">
+                <feature.icon className="h-5 w-5" />
+                {feature.text}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA Buttons - Enhanced */}
+        <div 
+          className="flex flex-col sm:flex-row justify-center gap-5 animate-slideInUp pt-4"
+          style={{ animationDelay: '0.8s' }}
         >
           <button
             onClick={() => scrollToSection('services')}
-            className="group relative px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-full shadow-xl hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300 overflow-hidden"
+            className="group relative px-10 py-5 bg-gradient-to-r from-primary to-accent text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-primary/60 transform hover:scale-110 transition-all duration-300 overflow-hidden"
           >
-            <span className="relative z-10 flex items-center justify-center gap-2">
+            <span className="relative z-10 flex items-center justify-center gap-3">
               Get Started
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
           </button>
 
           <button
             onClick={() => scrollToSection('contact')}
-            className="group px-8 py-4 bg-background/50 backdrop-blur-sm border-2 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary font-bold rounded-full shadow-xl hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
+            className="group relative px-10 py-5 bg-background/80 backdrop-blur-xl border-2 border-primary/50 text-primary hover:bg-primary hover:text-white hover:border-primary font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-primary/50 transform hover:scale-110 transition-all duration-300 overflow-hidden"
           >
-            Contact Us
+            <span className="relative z-10">Contact Us</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>
 
-        {/* Feature Badges */}
+        {/* Stats Section - Enhanced with Icons */}
         <div 
-          className="flex flex-wrap items-center justify-center gap-3 animate-fadeInUp pt-2"
-          style={{ animationDelay: '0.9s' }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto pt-16 animate-fadeInUp"
+          style={{ animationDelay: '1s' }}
         >
-          <div className="group px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-sm text-primary font-medium backdrop-blur-sm hover:bg-primary/20 hover:scale-105 transition-all duration-300 cursor-default">
-            <span className="flex items-center gap-2">
-              <Zap className="h-4 w-4" />
-              Fast Delivery
-            </span>
-          </div>
-          <div className="group px-4 py-2 bg-accent/10 border border-accent/30 rounded-full text-sm text-accent font-medium backdrop-blur-sm hover:bg-accent/20 hover:scale-105 transition-all duration-300 cursor-default">
-            <span className="flex items-center gap-2">
-              <Star className="h-4 w-4" />
-              Premium Quality
-            </span>
-          </div>
-          <div className="group px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-sm text-primary font-medium backdrop-blur-sm hover:bg-primary/20 hover:scale-105 transition-all duration-300 cursor-default">
-            <span className="flex items-center gap-2">
-              <Rocket className="h-4 w-4" />
-              Innovation First
-            </span>
-          </div>
-        </div>
+          {stats.map((stat, index) => (
+            <div 
+              key={stat.label}
+              className="group relative p-6 rounded-3xl bg-gradient-to-br from-background/80 via-background/60 to-transparent backdrop-blur-xl border-2 border-border/50 hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer overflow-hidden"
+              style={{ animationDelay: `${1 + index * 0.1}s` }}
+            >
+              {/* Background gradient effect */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              
+              {/* Icon */}
+              <div className="relative mx-auto w-14 h-14 mb-4 flex items-center justify-center">
+                <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} rounded-2xl blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
+                <div className={`relative bg-gradient-to-br ${stat.gradient} p-3 rounded-2xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                  <stat.icon className="h-8 w-8 text-white" />
+                </div>
+              </div>
 
-        {/* Stats Section */}
-        <div 
-          className="grid grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto pt-12 animate-fadeInUp"
-          style={{ animationDelay: '1.1s' }}
-        >
-          <div className="group space-y-2 p-4 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-all duration-300 border border-primary/10 hover:border-primary/30 hover:scale-105">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
-              100+
+              {/* Value */}
+              <div className="relative text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text mb-2">
+                {stat.value}
+              </div>
+
+              {/* Label */}
+              <div className="relative text-sm md:text-base text-muted-foreground font-medium group-hover:text-foreground transition-colors">
+                {stat.label}
+              </div>
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
             </div>
-            <div className="text-xs sm:text-sm text-muted-foreground font-medium">Projects Delivered</div>
-          </div>
-          <div className="group space-y-2 p-4 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent hover:from-accent/10 transition-all duration-300 border border-accent/10 hover:border-accent/30 hover:scale-105">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
-              50+
-            </div>
-            <div className="text-xs sm:text-sm text-muted-foreground font-medium">Happy Clients</div>
-          </div>
-          <div className="group space-y-2 p-4 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-all duration-300 border border-primary/10 hover:border-primary/30 hover:scale-105">
-            <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
-              24/7
-            </div>
-            <div className="text-xs sm:text-sm text-muted-foreground font-medium">Support Available</div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <div 
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-10 opacity-60 hover:opacity-100 transition-opacity"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 animate-bounce-slow"
       >
         <button
-          onClick={() => scrollToSection('services')}
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+          onClick={() => scrollToSection('about')}
+          className="flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
           aria-label="Scroll to explore"
         >
-          <span className="text-xs sm:text-sm font-medium">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-current rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-current rounded-full animate-scroll-down"></div>
+          <span className="text-sm font-semibold tracking-wide">Scroll to explore</span>
+          <div className="relative w-7 h-12 border-2 border-current rounded-full flex items-start justify-center p-2 group-hover:border-primary transition-colors">
+            <div className="w-1.5 h-3 bg-current rounded-full animate-scroll-down"></div>
           </div>
         </button>
       </div>
@@ -267,69 +301,77 @@ export function HomeSection() {
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
         }
 
         @keyframes fadeInUp {
-          from { 
-            opacity: 0; 
-            transform: translateY(30px); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
-          }
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideInUp {
-          from { 
-            opacity: 0; 
-            transform: translateY(40px); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
-          }
+          from { opacity: 0; transform: translateY(50px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes float-slow {
           0%, 100% { 
-            transform: translateY(0px) translateX(0px);
-            opacity: 0.3;
-          }
-          25% { 
-            transform: translateY(-20px) translateX(10px);
-            opacity: 0.6;
-          }
-          50% { 
-            transform: translateY(-10px) translateX(-10px);
+            transform: translateY(0px) translateX(0px) scale(1);
             opacity: 0.4;
           }
-          75% { 
-            transform: translateY(-30px) translateX(5px);
+          25% { 
+            transform: translateY(-30px) translateX(15px) scale(1.1);
+            opacity: 0.8;
+          }
+          50% { 
+            transform: translateY(-15px) translateX(-15px) scale(0.9);
             opacity: 0.5;
+          }
+          75% { 
+            transform: translateY(-40px) translateX(8px) scale(1.05);
+            opacity: 0.7;
           }
         }
 
         @keyframes scroll-down {
           0% { transform: translateY(0); opacity: 1; }
-          100% { transform: translateY(12px); opacity: 0; }
+          100% { transform: translateY(16px); opacity: 0; }
+        }
+
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0) translateX(-50%); }
+          50% { transform: translateY(-10px) translateX(-50%); }
         }
 
         @keyframes twinkle {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.2); }
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.3); }
         }
 
         @keyframes shooting-star {
           0% { transform: translateX(0) translateY(0); opacity: 1; }
           70% { opacity: 1; }
-          100% { transform: translateX(300px) translateY(300px); opacity: 0; }
+          100% { transform: translateX(400px) translateY(400px); opacity: 0; }
+        }
+
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
 
         .animate-gradient {
-          animation: gradient 3s ease infinite;
+          animation: gradient 4s ease infinite;
         }
 
         .animate-fadeIn {
@@ -352,7 +394,11 @@ export function HomeSection() {
         }
 
         .animate-scroll-down {
-          animation: scroll-down 1.5s ease-in-out infinite;
+          animation: scroll-down 1.8s ease-in-out infinite;
+        }
+
+        .animate-bounce-slow {
+          animation: bounce-slow 2s ease-in-out infinite;
         }
 
         .animate-twinkle {
@@ -361,6 +407,18 @@ export function HomeSection() {
 
         .animate-shooting-star {
           animation: shooting-star linear infinite;
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .animate-spin-slow {
+          animation: spin-slow 8s linear infinite;
         }
       `}</style>
     </section>
