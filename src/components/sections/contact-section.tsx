@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Send, Sparkles, MessageCircle, Clock, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { submitContactForm, type ContactFormState } from "@/app/actions";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useInView } from "react-intersection-observer";
 import { cn } from "@/lib/utils";
@@ -17,11 +17,11 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button 
-      type="submit" 
-      disabled={pending} 
-      size="lg" 
-      className="group relative w-full bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-white shadow-lg hover:shadow-primary/50 transition-all duration-300 overflow-hidden"
+    <Button
+      type="submit"
+      disabled={pending}
+      size="lg"
+      className="group relative w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-primary/25 transition-all duration-300 overflow-hidden"
     >
       <span className="relative z-10 flex items-center justify-center gap-2">
         {pending ? (
@@ -36,14 +36,13 @@ function SubmitButton() {
           </>
         )}
       </span>
-      <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </Button>
   );
 }
 
 export function ContactSection() {
   const initialState: ContactFormState = { message: "", status: "idle" };
-  const [state, formAction] = useFormState(submitContactForm, initialState);
+  const [state, formAction] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
 
@@ -66,24 +65,24 @@ export function ContactSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   const contactInfo = [
-    { 
-      icon: Mail, 
-      label: "Email", 
-      value: "pulsarx.inc@gmail.com", 
+    {
+      icon: Mail,
+      label: "Email",
+      value: "pulsarx.inc@gmail.com",
       href: "mailto:pulsarx.inc@gmail.com",
       gradient: "from-blue-500 to-cyan-500"
     },
-    { 
-      icon: Phone, 
-      label: "Phone", 
-      value: "+92 304 7058585", 
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+92 304 7058585",
       href: "tel:+923047058585",
       gradient: "from-green-500 to-emerald-500"
     },
-    { 
-      icon: MapPin, 
-      label: "Address", 
-      value: "Street 55 I8/3 Islamabad, Pakistan, WEB 40404", 
+    {
+      icon: MapPin,
+      label: "Address",
+      value: "Street 55 I8/3 Islamabad, Pakistan, WEB 40404",
       href: "#",
       gradient: "from-purple-500 to-pink-500"
     },
@@ -117,14 +116,14 @@ export function ContactSection() {
             <Sparkles className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium text-primary">Contact Us</span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
             Get In{" "}
             <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-transparent bg-clip-text">
               Touch
             </span>
           </h2>
-          
+
           <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Have a project in mind or just want to say hi? We'd love to hear from you and discuss how we can help bring your vision to life.
           </p>
@@ -138,21 +137,22 @@ export function ContactSection() {
           )}
         >
           {/* Contact Form - Takes 3 columns */}
-          <div className="lg:col-span-3">
+
+          <div className="lg:col-span-3 space-y-8">
             <Card className="relative border-2 border-border/50 shadow-2xl overflow-hidden group hover:border-primary/30 transition-all duration-500">
               {/* Card glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               <CardHeader className="relative">
                 <CardTitle className="text-3xl font-bold flex items-center gap-3">
-                  <div className="w-2 h-10 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                  <span className="w-2 h-10 bg-gradient-to-b from-primary to-accent rounded-full"></span>
                   <span className="bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
                     Send us a message
                   </span>
                 </CardTitle>
                 <p className="text-muted-foreground mt-2">Fill out the form below and we'll get back to you shortly.</p>
               </CardHeader>
-              
+
               <CardContent className="relative">
                 <form action={formAction} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
@@ -161,12 +161,12 @@ export function ContactSection() {
                         Full Name
                         <span className="text-destructive">*</span>
                       </Label>
-                      <Input 
-                        id="name" 
-                        name="name" 
-                        type="text" 
-                        placeholder="John Doe" 
-                        required 
+                      <Input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="John Doe"
+                        required
                         className="bg-muted/50 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       />
                       {state.errors?.name && (
@@ -182,12 +182,12 @@ export function ContactSection() {
                         Email Address
                         <span className="text-destructive">*</span>
                       </Label>
-                      <Input 
-                        id="email" 
-                        name="email" 
-                        type="email" 
-                        placeholder="john@example.com" 
-                        required 
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        required
                         className="bg-muted/50 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                       />
                       {state.errors?.email && (
@@ -204,12 +204,12 @@ export function ContactSection() {
                       Message
                       <span className="text-destructive">*</span>
                     </Label>
-                    <Textarea 
-                      id="message" 
-                      name="message" 
-                      placeholder="Tell us about your project..." 
-                      rows={6} 
-                      required 
+                    <Textarea
+                      id="message"
+                      name="message"
+                      placeholder="Tell us about your project..."
+                      rows={6}
+                      required
                       className="bg-muted/50 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     />
                     {state.errors?.message && (
@@ -224,6 +224,31 @@ export function ContactSection() {
                 </form>
               </CardContent>
             </Card>
+
+            {/* Schedule Call Card */}
+            <Card className="border-2 border-border/50 shadow-xl hover:shadow-2xl hover:border-primary/30 transition-all duration-500 overflow-hidden group">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold flex items-center gap-3">
+                  <span className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></span>
+                  Book a Call
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <p className="text-muted-foreground mb-6 relative z-10">
+                  Prefer to talk directly? Schedule a free 15-minute consultation with our experts.
+                </p>
+                <a
+                  href="https://calendly.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full px-6 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] gap-2 group/btn"
+                >
+                  <Clock className="h-4 w-4 group-hover/btn:rotate-12 transition-transform" />
+                  Schedule Meeting
+                </a>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Contact Info Sidebar - Takes 2 columns */}
@@ -232,7 +257,7 @@ export function ContactSection() {
             <Card className="border-2 border-border/50 shadow-xl hover:shadow-2xl hover:border-primary/30 transition-all duration-500">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold flex items-center gap-3">
-                  <div className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                  <span className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></span>
                   Contact Info
                 </CardTitle>
               </CardHeader>
@@ -265,7 +290,7 @@ export function ContactSection() {
             <Card className="border-2 border-border/50 shadow-xl hover:shadow-2xl hover:border-primary/30 transition-all duration-500">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold flex items-center gap-3">
-                  <div className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                  <span className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></span>
                   Quick Info
                 </CardTitle>
               </CardHeader>
@@ -290,7 +315,7 @@ export function ContactSection() {
             <Card className="border-2 border-border/50 shadow-xl hover:shadow-2xl hover:border-primary/30 transition-all duration-500">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold flex items-center gap-3">
-                  <div className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+                  <span className="w-2 h-8 bg-gradient-to-b from-primary to-accent rounded-full"></span>
                   Follow Us
                 </CardTitle>
               </CardHeader>
@@ -323,6 +348,8 @@ export function ContactSection() {
                 </div>
               </CardContent>
             </Card>
+
+
           </div>
         </div>
       </div>
@@ -339,6 +366,6 @@ export function ContactSection() {
           animation: gradient 3s ease infinite;
         }
       `}</style>
-    </section>
+    </section >
   );
 }

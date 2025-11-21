@@ -83,15 +83,16 @@ export function ServicesSection() {
   }, []);
 
   return (
-    <section 
-      id="services" 
+    <section
+      id="services"
       className="relative py-20 md:py-32 bg-gradient-to-b from-background via-primary/5 to-background overflow-hidden"
     >
       {/* Animated Background - Same as Contact Section */}
+      {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,14 +102,14 @@ export function ServicesSection() {
             <Sparkles className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium text-primary">What We Offer</span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
             Our{" "}
             <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-transparent bg-clip-text">
               Services
             </span>
           </h2>
-          
+
           <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We offer a wide range of digital solutions to help your business thrive in the modern digital landscape.
           </p>
@@ -118,8 +119,8 @@ export function ServicesSection() {
         <div
           ref={sectionRef}
           className={cn(
-            "grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            "grid md:grid-cols-2 lg:grid-cols-3 gap-8",
+            isVisible ? "opacity-100" : "opacity-0"
           )}
         >
           {services.map((service, index) => {
@@ -127,7 +128,11 @@ export function ServicesSection() {
             return (
               <div
                 key={service.title}
-                className="group relative"
+                className={cn(
+                  "group relative transform transition-all duration-700",
+                  isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+                )}
+                style={{ transitionDelay: `${index * 100}ms` }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -141,7 +146,7 @@ export function ServicesSection() {
                 <div className="relative h-full border-2 border-border/50 shadow-2xl overflow-hidden rounded-3xl group hover:border-primary/30 transition-all duration-500 bg-card">
                   {/* Card glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   {/* Background Pattern */}
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
                     <Icon className="w-full h-full text-primary" />

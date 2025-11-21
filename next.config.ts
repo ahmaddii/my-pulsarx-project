@@ -69,11 +69,17 @@ const nextConfig: NextConfig = {
         port: '', // Keep port as '' if no specific port is needed
         pathname: '/**', // Allow all paths on this hostname
       },
-      { // Add this new entry for ebrandpromotion.com
+      {
         protocol: 'https',
         hostname: 't4.ftcdn.net',
-        port: '', // Keep port as '' if no specific port is needed
-        pathname: '/**', // Allow all paths on this hostname
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 't3.ftcdn.net',
+        port: '',
+        pathname: '/**',
       },
     ],
   },

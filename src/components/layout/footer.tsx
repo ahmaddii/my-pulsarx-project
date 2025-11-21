@@ -68,9 +68,9 @@ export function Footer() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        
+
         {/* Gradient Orbs */}
-        <div 
+        <div
           className="absolute w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"
           style={{
             top: "20%",
@@ -78,7 +78,7 @@ export function Footer() {
             animation: "float 20s ease-in-out infinite",
           }}
         ></div>
-        <div 
+        <div
           className="absolute w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-pulse"
           style={{
             bottom: "10%",
@@ -129,18 +129,18 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+              <span className="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></span>
               Quick Links
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
-                <li 
+                <li
                   key={link.label}
                   className="transform transition-all duration-300 hover:translate-x-2"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group"
                   >
                     <span className="w-0 h-px bg-primary group-hover:w-4 transition-all duration-300"></span>
@@ -154,18 +154,18 @@ export function Footer() {
           {/* Services */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+              <span className="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></span>
               Services
             </h3>
             <ul className="space-y-3">
               {services.map((service, index) => (
-                <li 
+                <li
                   key={service.label}
                   className="transform transition-all duration-300 hover:translate-x-2"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <Link 
-                    href={service.href} 
+                  <Link
+                    href={service.href}
                     className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2 group"
                   >
                     <span className="w-0 h-px bg-primary group-hover:w-4 transition-all duration-300"></span>
@@ -179,23 +179,23 @@ export function Footer() {
           {/* Contact & Social */}
           <div className="space-y-6">
             <h3 className="text-lg font-semibold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></div>
+              <span className="w-1 h-6 bg-gradient-to-b from-primary to-accent rounded-full"></span>
               Get In Touch
             </h3>
-            
+
             {/* Contact Info */}
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3 text-muted-foreground hover:text-primary transition-colors group cursor-pointer">
                 <MapPin className="h-4 w-4 mt-0.5 group-hover:scale-110 transition-transform" />
-                <span>Rawalpindi, Punjab, PK</span>
+                <span>Islamabad, Punjab, PK</span>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group cursor-pointer">
                 <Phone className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span>+92 XXX XXXXXXX</span>
+                <span>+92 304 7058585</span>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group cursor-pointer">
                 <Mail className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span>contact@pulsarx.com</span>
+                <span>pulsarx.inc@gmail.com</span>
               </div>
             </div>
 
@@ -249,16 +249,16 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} PulsarX. All rights reserved. Crafted with 💜
+            &copy; {new Date().getFullYear()} PulsarX. All rights reserved to Pakistan 🇵🇰
           </p>
           <div className="flex gap-6 text-xs text-muted-foreground">
-            <Link href="#privacy" className="hover:text-primary transition-colors">
+            <Link href="https://www.linkedin.com/in/malik-ahmad-rasheed-3768902a9/" className="hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="hover:text-primary transition-colors">
+            <Link href="https://www.linkedin.com/in/malik-ahmad-rasheed-3768902a9/" className="hover:text-primary transition-colors">
               Terms of Service
             </Link>
-            <Link href="#cookies" className="hover:text-primary transition-colors">
+            <Link href="https://www.linkedin.com/in/malik-ahmad-rasheed-3768902a9/" className="hover:text-primary transition-colors">
               Cookies
             </Link>
           </div>

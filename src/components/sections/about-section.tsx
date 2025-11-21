@@ -47,14 +47,14 @@ export function AboutSection() {
             <Sparkles className="h-4 w-4 text-primary animate-pulse" />
             <span className="text-sm font-medium text-primary">About Us</span>
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
             Discover{" "}
             <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-transparent bg-clip-text">
               PulsarX
             </span>
           </h2>
-          
+
           <p className="mt-4 text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Where innovation meets excellence. We're on a mission to illuminate the digital universe with transformative solutions.
           </p>
@@ -66,11 +66,11 @@ export function AboutSection() {
           <div className="relative group animate-in fade-in slide-in-from-left duration-1000">
             {/* Decorative elements */}
             <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent rounded-3xl opacity-20 blur-2xl group-hover:opacity-30 transition-opacity duration-500"></div>
-            
+
             <Card className="relative overflow-hidden border-2 border-border/50 shadow-2xl rounded-3xl transform transition-all duration-500 hover:scale-[1.02] hover:shadow-primary/20">
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-              
+
               <Image
                 src="/images/team2.jpg"
                 alt="PulsarX Team"
@@ -150,13 +150,17 @@ export function AboutSection() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-primary to-accent rounded-xl font-semibold text-white shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-105 overflow-hidden">
+              <a
+                href="https://www.linkedin.com/in/malik-ahmad-rasheed-3768902a9/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block group relative px-8 py-4 bg-primary hover:bg-primary/90 rounded-xl font-semibold text-white shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:scale-105 overflow-hidden"
+              >
                 <span className="relative z-10 flex items-center gap-2">
                   Learn More About Us
                   <Sparkles className="h-4 w-4 group-hover:rotate-12 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -165,7 +169,7 @@ export function AboutSection() {
         <div className="relative">
           {/* Decorative line */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mb-12"></div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 animate-in fade-in slide-in-from-bottom duration-1000">
             {stats.map((stat, index) => (
               <Card
